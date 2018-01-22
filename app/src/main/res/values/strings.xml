@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ArtQuiz</string>
+
+    <string name="title_art">Art</string>
+    <string name="title_quiz">Quiz</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="start_button">Start</string>
+    <string name="title_activity_result">ResultActivity</string>
+</resources>
