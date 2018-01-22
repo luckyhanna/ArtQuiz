@@ -24,6 +24,9 @@ public class ScrollableQuizActivity extends AppCompatActivity {
 
     public void finishQuiz(View view) {
 
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra(MainActivity.EXTRA_NAME, userName);
+        startActivity(intent);
 
     }
 }
