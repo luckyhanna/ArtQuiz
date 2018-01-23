@@ -37,7 +37,7 @@ public class ScrollableQuizRecActivity extends AppCompatActivity {
         userName = intent.getStringExtra(MainActivity.EXTRA_NAME);
 
         TextView textView = (TextView) findViewById(R.id.questions_title);
-        textView.setText("Have fun, " + userName + "!");
+        textView.setText( getString(R.string.have_fun, userName));
 
         rv = (RecyclerView)findViewById(R.id.rv);
         rv.setHasFixedSize(true);
@@ -85,5 +85,15 @@ public class ScrollableQuizRecActivity extends AppCompatActivity {
             }
         }
         return unanswered;
+    }
+
+    @Override
+    public void onBackPressed() {
+        ConfirmationDialogFragment dialog = new ConfirmationDialogFragment();
+        dialog.show(getSupportFragmentManager(), "ConfirmationDialogFragment");
+    }
+
+    public void goBack() {
+        super.onBackPressed();
     }
 }

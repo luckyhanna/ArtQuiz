@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i("MainActivity","Start button clicked");
 
         String name = nameInput.getText().toString();
-//        Intent intent = new Intent(this, ScrollableQuizActivity.class);
         Intent intent = new Intent(this, ScrollableQuizRecActivity.class);
         intent.putExtra(EXTRA_NAME, name);
         startActivity(intent);

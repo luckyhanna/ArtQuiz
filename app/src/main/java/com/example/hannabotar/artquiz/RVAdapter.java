@@ -20,7 +20,6 @@ import java.util.Map;
 /**
  * Created by hanna.botar on 1/23/2018.
  */
-
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder> {
 
     List<Question> questions;
@@ -55,14 +54,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
             rb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int pos = position;
-                    radioGroupSelection.put(pos, rb.getText().toString());
-//                    setRadio(holder, radioGroupSelection.get(pos));
+                    radioGroupSelection.put(position, rb.getText().toString());
                 }
             });
         }
-//        setRadio(holder, radioGroupSelection.get(position));
-
     }
 
     @Override

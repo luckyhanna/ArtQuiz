@@ -10,7 +10,7 @@
         android:id="@+id/questions_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Have fun, dear user!"
+        android:text=""
         android:textSize="24sp"
         android:gravity="center"
         android:paddingBottom="8dp"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="finishQuiz"
                 android:layout_gravity="center_horizontal"
-                android:text="Finish" />
+                android:text="@string/finish_quiz" />
 
         </LinearLayout>
     </ScrollView>
