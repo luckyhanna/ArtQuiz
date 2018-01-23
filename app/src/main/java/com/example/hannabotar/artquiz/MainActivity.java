@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         startButton = (Button) findViewById(R.id.start_button);
         startButton.setEnabled(false);
 
-        nameInput = findViewById(R.id.name_input);
+        nameInput = (EditText) findViewById(R.id.name_input);
         nameInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
