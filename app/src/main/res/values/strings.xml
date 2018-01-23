@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">ArtQuiz</string>
 
     <string name="title_art">Art</string>
@@ -6,4 +6,6 @@
     <string name="name_hint">Enter your name</string>
     <string name="start_button">Start</string>
     <string name="title_activity_result">ResultActivity</string>
+
+    <string name="incomplete">You have unanswered question! (<xliff:g id="question_numbers" example="1,2,3">%s</xliff:g>)</string>
 </resources>
