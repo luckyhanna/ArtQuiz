@@ -4,9 +4,11 @@ import com.example.hannabotar.artquiz.R;
 import com.example.hannabotar.artquiz.domain.Question;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by hanna.botar on 1/22/2018.
@@ -37,6 +39,8 @@ public class QuizUtil {
         questionList.add(new Question(R.drawable.venus_de_milo, "Name the sculpture: ", answerMap3,
                 "Aphrodite of Milos, most commonly called Venus de Milo, is a sculpture thought to be created by Alexandros of Antioch around 130 BC. The statue originally had arms, and is on display at the Louvre in Paris."));
 
+        long seed = System.nanoTime();
+        Collections.shuffle(questionList, new Random(seed));
         return questionList;
     }
 
