@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -32,6 +33,23 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
         for (int i = 0; i < questions.size(); i++) {
             radioGroupSelection.put(i, null);
         }
+        System.out.println("TODO");
+        setHasStableIds(true);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public void onViewRecycled(QuestionViewHolder holder) {
+        holder.questionImage.setImageBitmap(null);
     }
 
     @Override
@@ -45,16 +63,21 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
     public void onBindViewHolder(final QuestionViewHolder holder, final int position) {
         holder.questionImage.setImageResource(questions.get(position).getImageId());
         holder.questionText.setText(String.valueOf(position + 1) + ". " + questions.get(position).getQuestion());
+
         Map<String, Boolean> answerMap = questions.get(position).getAnswerMap();
         List<String> questionList = new ArrayList<>();
         questionList.addAll(answerMap.keySet());
+        /*if (radioGroupSelection.get(position) == null) {
+            holder.radioGroup.clearCheck();
+        }*/
         for (int i = 0; i < questionList.size(); i++) {
-            final RadioButton rb = (RadioButton) holder.radioGroup.getChildAt(i);
+            RadioButton rb = (RadioButton) holder.radioGroup.getChildAt(i);
+
             rb.setText(questionList.get(i));
             rb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    radioGroupSelection.put(position, rb.getText().toString());
+                    radioGroupSelection.put(position, ((RadioButton) view).getText().toString());
                 }
             });
         }
