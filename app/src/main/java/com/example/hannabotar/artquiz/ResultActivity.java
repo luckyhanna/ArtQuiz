@@ -84,17 +84,6 @@ public class ResultActivity extends AppCompatActivity {
         rv.setAdapter(rvResultAdapter);
     }
 
-    // TODO
-    private void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
-
-    }
-
-    // TODO
-    private void hideProgress() {
-        progressBar.setVisibility(View.GONE);
-    }
-
     @Override
     public void onBackPressed() {
         goHome(null);

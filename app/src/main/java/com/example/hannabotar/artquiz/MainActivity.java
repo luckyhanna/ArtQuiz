@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         startButton = (Button) findViewById(R.id.start_button);
         startButton.setEnabled(false);
+        startButton.setTextColor(getResources().getColor(R.color.colorPrimaryDarker));
 
         nameInput = (EditText) findViewById(R.id.name_input);
         nameInput.addTextChangedListener(new TextWatcher() {
@@ -41,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if (editable.length() > 0) {
                     startButton.setEnabled(true);
+                    startButton.setTextColor(getResources().getColor(R.color.white));
                 } else {
                     startButton.setEnabled(false);
+                    startButton.setTextColor(getResources().getColor(R.color.colorPrimaryDarker));
                 }
             }
         });

@@ -3,6 +3,8 @@ package com.example.hannabotar.artquiz;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,8 @@ public class RVResultAdapter extends RecyclerView.Adapter<RVResultAdapter.Result
     public void onBindViewHolder(ResultViewHolder holder, int position) {
         Result result = results.get(position);
         holder.resultImage.setImageResource(result.getQuestion().getImageId());
-        holder.explanationText.setText(String.valueOf(position + 1) + ". " + result.getQuestion().getExplanation());
+        Spanned explanation = Html.fromHtml(String.valueOf(position + 1) + ". " + result.getQuestion().getExplanation());
+        holder.explanationText.setText(explanation);
         holder.answer.setText(result.getAnswer());
 
         if (result.isCorrect()) {
