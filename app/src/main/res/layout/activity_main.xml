@@ -27,10 +27,10 @@
             android:layout_weight="5"
             android:gravity="bottom"
             android:text="@string/title_art"
-            android:textColor="#FFB02810"
+            android:textColor="@color/colorAccent"
             android:textSize="110sp"
             android:fontFamily="@font/amazr"
-            android:shadowColor="#FFFFFF"
+            android:shadowColor="@color/white"
             android:shadowRadius="1"
             android:shadowDx="-1"
             android:shadowDy="1"
@@ -44,8 +44,8 @@
             android:layout_gravity="center_horizontal"
             android:gravity="top"
             android:fontFamily="sans-serif"
-            android:textColor="#d2000000"
-            android:shadowColor="#FFFFFF"
+            android:textColor="@color/opaqueBlack"
+            android:shadowColor="@color/white"
             android:shadowRadius="1"
             android:shadowDx="-1"
             android:shadowDy="1"
@@ -67,22 +67,20 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:hint="@string/name_hint"
-                android:textColorHint="#5A595B"
+                android:textColorHint="@color/darkGrey"
                 android:textColorHighlight="@color/colorPrimary"
                 android:textColor="@color/colorAccent"
                 android:inputType="textCapWords"
                 android:textSize="24sp"
-                android:backgroundTint="@color/colorAccent"
                 />
             <Button
-
                 android:id="@+id/start_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/start_button"
                 android:layout_gravity="center_horizontal"
                 android:onClick="clickStart"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 />
         </LinearLayout>
 
