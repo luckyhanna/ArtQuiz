@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_below="@id/results_title"
-        android:text="Your score is: 2/10"
+        android:text=""
         android:textSize="18sp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
