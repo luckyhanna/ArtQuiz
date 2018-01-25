@@ -13,6 +13,7 @@ import com.example.hannabotar.artquiz.domain.Question;
 import com.example.hannabotar.artquiz.util.QuizUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,6 +85,7 @@ public class ScrollableQuizRecActivity extends AppCompatActivity {
                 unanswered.add(questionNo + 1);
             }
         }
+        Collections.sort(unanswered);
         return unanswered;
     }
 

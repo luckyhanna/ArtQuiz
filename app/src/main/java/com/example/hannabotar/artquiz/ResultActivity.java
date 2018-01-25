@@ -43,7 +43,7 @@ public class ResultActivity extends AppCompatActivity {
         questionList = (ArrayList) intent.getSerializableExtra(ScrollableQuizRecActivity.QUESTION_LIST);
         answerMap = (HashMap) intent.getSerializableExtra(ScrollableQuizRecActivity.ANSWER_MAP);
 
-        scoreTextView = findViewById(R.id.score_text);
+        scoreTextView = (TextView) findViewById(R.id.score_text);
 
         loadResults();
     }
@@ -71,7 +71,7 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         scoreTextView.setText(getString(R.string.score, correct, questionList.size()));
-        TextView resultsTitle = findViewById(R.id.results_title);
+        TextView resultsTitle = (TextView) findViewById(R.id.results_title);
         resultsTitle.setText(getString(R.string.congrats, userName));
 
         rv = (RecyclerView)findViewById(R.id.result_rv);

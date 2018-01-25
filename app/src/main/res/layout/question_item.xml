@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--Question no 1-->
         <ImageView
             android:id="@+id/question_image"
             android:layout_width="match_parent"

@@ -1,57 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="20dp"
     tools:context="com.example.hannabotar.artquiz.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:text="@string/title_art"
-        android:textSize="50sp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="bottom"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:text="@string/title_quiz"
-        android:textSize="50sp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="top"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background_image"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        android:alpha="0.5"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:layout_margin="20dp"
         >
-        <EditText
-            android:id="@+id/name_input"
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="3"
+            android:gravity="bottom"
+            android:text="@string/title_art"
+            android:textColor="#FFB02810"
+            android:textSize="100sp"
+            android:fontFamily="@font/amazr"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:text="@string/title_quiz"
+            android:textSize="100sp"
+            android:fontFamily="sans-serif"
+            android:textColor="#99000000"
+            android:layout_gravity="center_horizontal"
+            android:gravity="top"
+            />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:hint="@string/name_hint"
-            android:inputType="textCapWords"
-            />
-        <Button
-            android:id="@+id/start_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_button"
-            android:layout_gravity="center_horizontal"
-            android:onClick="clickStart"
-            />
+            >
+            <EditText
+                android:id="@+id/name_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:hint="@string/name_hint"
+                android:inputType="textCapWords"
+                />
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_button"
+                android:layout_gravity="center_horizontal"
+                android:onClick="clickStart"
+                />
+        </LinearLayout>
+
     </LinearLayout>
 
-
-</LinearLayout>
+</RelativeLayout>
