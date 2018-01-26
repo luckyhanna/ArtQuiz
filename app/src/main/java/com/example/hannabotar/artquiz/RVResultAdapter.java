@@ -43,6 +43,11 @@ public class RVResultAdapter extends RecyclerView.Adapter<RVResultAdapter.Result
         holder.resultImage.setImageResource(result.getQuestion().getImageId());
         Spanned explanation = Html.fromHtml(String.valueOf(position + 1) + ". " + result.getQuestion().getExplanation());
         holder.explanationText.setText(explanation);
+        /*if (result.isCorrect()){
+            holder.explanationText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.correct_35, 0, 0, 0);
+        } else {
+            holder.explanationText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.incorrect_35, 0, 0, 0);
+        }*/
         Map<String, Boolean> answerMap = result.getAnswerMap();
         int i = 0;
         holder.answer1.setVisibility(View.GONE);

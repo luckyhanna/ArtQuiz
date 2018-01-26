@@ -184,7 +184,6 @@ public class QuizUtil {
         String question2 = "Check Rembrandt's painting(s):";
         questionList.add(new Question(R.drawable.rembrandt, question2, multipleMap2, explanation2, QuestionType.MULTIPLE_CHOICE));
 
-
         Map<String, Boolean> multipleMap3 = new HashMap<>();
         multipleMap3.put("The Starry Night", true);
         multipleMap3.put("Wheat Field with Crows", true);
@@ -194,6 +193,21 @@ public class QuizUtil {
                 "<b>The Potato Eaters</b> are three famous painting by Vincent van Gogh.";
         String question3 = "Check Van Gogh's painting(s):";
         questionList.add(new Question(R.drawable.van_gogh, question3, multipleMap3, explanation3, QuestionType.MULTIPLE_CHOICE));
+
+
+        // Free text questions
+        Map<String, Boolean> singleText1 = new HashMap<>();
+        singleText1.put("1452", true);
+        String explanationText1 = "Leonardo di ser Piero da Vinci was born on 15 April <b>1452</b> in Vinci, Republic of Florence.";
+        questionList.add(new Question(R.drawable.leonardo_da_vinci, "In what year was Leonardo da Vinci born?",
+                singleText1, explanationText1, QuestionType.FREE_TEXT));
+
+        Map<String, Boolean> singleText2 = new HashMap<>();
+        singleText2.put("1904", true);
+        String explanationText2 = "Salvador Domingo Felipe Jacinto Dalí Domenech was born on 11 May <b>1904</b> in Figueres, Catalonia, Spain.";
+        questionList.add(new Question(R.drawable.dali, "In what year was Salvador Dalí born?",
+                singleText2, explanationText2, QuestionType.FREE_TEXT));
+
 
 
         long seed = System.nanoTime();

@@ -2,9 +2,13 @@ package com.example.hannabotar.artquiz;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -80,6 +84,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
             holder.radioGroup.setVisibility(View.VISIBLE);
             holder.multipleLayout.setVisibility(View.GONE);
             holder.textLayout.setVisibility(View.GONE);
+            holder.textLayout.setFocusable(false);
 
             for (int i = 0; i < questionList.size(); i++) {
                 RadioButton rb = (RadioButton) holder.radioGroup.getChildAt(i);
@@ -99,13 +104,20 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
             holder.radioGroup.setVisibility(View.GONE);
             holder.multipleLayout.setVisibility(View.VISIBLE);
             holder.textLayout.setVisibility(View.GONE);
+            holder.textLayout.setFocusable(false);
 
             for (int i = 0; i < questionList.size(); i++) {
                 LinearLayout checkBoxGroup = (LinearLayout) holder.multipleLayout.getChildAt(i);
                 TextView textView = (TextView) checkBoxGroup.getChildAt(1);
                 final String answerText = questionList.get(i);
                 textView.setText(answerText);
-                CheckBox checkBox = (CheckBox) checkBoxGroup.getChildAt(0);
+                final CheckBox checkBox = (CheckBox) checkBoxGroup.getChildAt(0);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        checkBox.callOnClick();
+                    }
+                });
                 checkBox.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -123,6 +135,27 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
             holder.radioGroup.setVisibility(View.GONE);
             holder.multipleLayout.setVisibility(View.GONE);
             holder.textLayout.setVisibility(View.VISIBLE);
+            holder.textLayout.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//            holder.textLayout.onKeyUp(KeyEvent.KEYCODE_ENTER, KeyEvent.ACTION_UP);
+            holder.textLayout.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    // do nothing
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    // do nothing
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    String answerChecked = editable.toString();
+                    Set<String> answerSet = new HashSet<>();
+                    answerSet.add(answerChecked);
+                    radioGroupSelection.put(position, answerSet);
+                }
+            });
         }
 
     }
