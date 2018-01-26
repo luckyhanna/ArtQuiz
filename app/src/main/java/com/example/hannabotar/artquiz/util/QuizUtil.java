@@ -2,6 +2,7 @@ package com.example.hannabotar.artquiz.util;
 
 import com.example.hannabotar.artquiz.R;
 import com.example.hannabotar.artquiz.domain.Question;
+import com.example.hannabotar.artquiz.domain.QuestionType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +22,9 @@ public class QuizUtil {
 
     public static List<Question> initMockData() {
         List<Question> questionList = new ArrayList<>();
-        Map<String, Boolean> answerMap1 = new HashMap<>();
+
+//        Single chioice questions
+        /*Map<String, Boolean> answerMap1 = new HashMap<>();
         answerMap1.put("Mona Lisa", true);
         answerMap1.put("Madonna", false);
         answerMap1.put("Venus", false);
@@ -139,7 +142,7 @@ public class QuizUtil {
         answerMap17.put("The School of Philosophy", false);
         questionList.add(new Question(R.drawable.the_school_of_athens, PAINTING_QUESTION, answerMap17,
                 "<b>The School of Athens</b> is one of the most famous frescoes by the Italian Renaissance artist Raphael, located in the Apostolic Palace in the Vatican. Commentators have suggested that nearly every great ancient Greek philosopher can be found in the painting. In the center of the fresco are the two undisputed main subjects: Plato and Aristotle, thought to be modelled after Leonardo da Vinci and Giuliano da Sangallo."));
-
+*/
         Map<String, Boolean> answerMap18 = new HashMap<>();
         answerMap18.put("Haystacks, (Midday)", true);
         answerMap18.put("Wheatstacks (Sunset, Snow Effect)", false);
@@ -160,6 +163,37 @@ public class QuizUtil {
         answerMap20.put("Grief", false);
         questionList.add(new Question(R.drawable.pieta, SCULPTURE_QUESTION, answerMap20,
                 "The <b>Pietà</b> is a work of Renaissance sculpture by Michelangelo Buonarroti, housed in St. Peter's Basilica, Vatican City. This famous work of art depicts the body of Jesus on the lap of his mother Mary after the Crucifixion."));
+
+        // Multiple choice questions
+        Map<String, Boolean> multipleMap1 = new HashMap<>();
+        multipleMap1.put("The Last Supper", true);
+        multipleMap1.put("Mona Lisa", true);
+        multipleMap1.put("The Three Graces", false);
+        String explanation1 = "<b>The Last Supper</b> and <b>Mona Lisa</b> are Leonardo da Vinci's famous paintings. " +
+                "<b>The Three Graces</b> is a 1635 oil painting by Rubens.";
+        String question1 = "Check Leonardo da Vinci's painting(s):";
+        questionList.add(new Question(R.drawable.leonardo_da_vinci, question1, multipleMap1, explanation1, QuestionType.MULTIPLE_CHOICE));
+
+        Map<String, Boolean> multipleMap2 = new HashMap<>();
+        multipleMap2.put("The Night Watch", true);
+        multipleMap2.put("Tha Bathers", false);
+        multipleMap2.put("Whistler's Mother", false);
+        String explanation2 = "<b>The Night Watch</b> is a 1642 painting by Rembrandt van Rijn. " +
+                "<b>Whistler's Mother</b> is a painting in oils on canvas by James McNeill Whistler. " +
+                "<b>The Bathers</b> by Paul Cézanne is considered to be the painter's finest work.";
+        String question2 = "Check Rembrandt's painting(s):";
+        questionList.add(new Question(R.drawable.rembrandt, question2, multipleMap2, explanation2, QuestionType.MULTIPLE_CHOICE));
+
+
+        Map<String, Boolean> multipleMap3 = new HashMap<>();
+        multipleMap3.put("The Starry Night", true);
+        multipleMap3.put("Wheat Field with Crows", true);
+        multipleMap3.put("The Potato Eaters", true);
+        String explanation3 = "<b>The Starry Night</b>, " +
+                "<b>Wheat Field with Crows</b> and " +
+                "<b>The Potato Eaters</b> are three famous painting by Vincent van Gogh.";
+        String question3 = "Check Van Gogh's painting(s):";
+        questionList.add(new Question(R.drawable.van_gogh, question3, multipleMap3, explanation3, QuestionType.MULTIPLE_CHOICE));
 
 
         long seed = System.nanoTime();

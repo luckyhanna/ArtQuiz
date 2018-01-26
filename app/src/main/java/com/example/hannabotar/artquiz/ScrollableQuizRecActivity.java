@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ScrollableQuizRecActivity extends AppCompatActivity {
 
@@ -57,7 +58,7 @@ public class ScrollableQuizRecActivity extends AppCompatActivity {
 
         RecyclerView recView = (RecyclerView) findViewById(R.id.rv);
         RVAdapter rvAdapter = (RVAdapter) recView.getAdapter();
-        Map<Integer, String> answerSelection = rvAdapter.getRadioGroupSelection();
+        Map<Integer, Set<String>> answerSelection = rvAdapter.getRadioGroupSelection();
         System.out.println(answerSelection);
 
         List<Integer> unanswered = getUnansweredQuestions(answerSelection);
@@ -78,10 +79,10 @@ public class ScrollableQuizRecActivity extends AppCompatActivity {
 
     }
 
-    private List<Integer> getUnansweredQuestions(Map<Integer, String> answerSelection) {
+    private List<Integer> getUnansweredQuestions(Map<Integer, Set<String>> answerSelection) {
         List<Integer> unanswered = new ArrayList<>();
         for (Integer questionNo : answerSelection.keySet()) {
-            if (answerSelection.get(questionNo) == null) {
+            if (answerSelection.get(questionNo) == null || answerSelection.get(questionNo).size() == 0) {
                 unanswered.add(questionNo + 1);
             }
         }

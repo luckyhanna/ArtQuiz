@@ -36,15 +36,41 @@
             android:textColor="@android:color/black"
             android:layout_marginBottom="8dp"/>
 
-        <TextView
-            android:id="@+id/answer"
+        <LinearLayout
+            android:id="@+id/answer_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:drawablePadding="10dp"
-            android:text=""
-            android:gravity="center_vertical"
-            />
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/answer1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:drawablePadding="10dp"
+                android:text=""
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/answer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:drawablePadding="10dp"
+                android:text=""
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/answer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:drawablePadding="10dp"
+                android:text=""
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+
 
     </LinearLayout>
 

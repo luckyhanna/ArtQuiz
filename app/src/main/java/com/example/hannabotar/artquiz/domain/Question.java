@@ -13,6 +13,7 @@ public class Question implements Serializable {
     private String question;
     private Map<String, Boolean> answerMap;
     private String explanation;
+    private QuestionType questionType;
 
     public Question() {
     }
@@ -22,6 +23,15 @@ public class Question implements Serializable {
         this.question = question;
         this.answerMap = answerMap;
         this.explanation = explanation;
+        this.questionType = QuestionType.SINGLE_CHOICE;
+    }
+
+    public Question(int imageId, String question, Map<String, Boolean> answerMap, String explanation, QuestionType questionType) {
+        this.imageId = imageId;
+        this.question = question;
+        this.answerMap = answerMap;
+        this.explanation = explanation;
+        this.questionType = questionType;
     }
 
     public int getImageId() {
@@ -54,5 +64,13 @@ public class Question implements Serializable {
 
     public void setExplanation(String explanation) {
         this.explanation = explanation;
+    }
+
+    public QuestionType getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType;
     }
 }

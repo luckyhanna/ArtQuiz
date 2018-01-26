@@ -1,6 +1,7 @@
 package com.example.hannabotar.artquiz.domain;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * Created by hanna.botar on 1/23/2018.
@@ -9,15 +10,16 @@ import java.io.Serializable;
 public class Result implements Serializable {
 
     private Question question;
-    private String answer;
+    private Map<String, Boolean> answerMap;
     private boolean correct;
+
 
     public Result() {
     }
 
-    public Result(Question question, String answer, boolean correct) {
+    public Result(Question question, Map<String, Boolean> answerMap, boolean correct) {
         this.question = question;
-        this.answer = answer;
+        this.answerMap = answerMap;
         this.correct = correct;
     }
 
@@ -29,12 +31,12 @@ public class Result implements Serializable {
         this.question = question;
     }
 
-    public String getAnswer() {
-        return answer;
+    public Map<String, Boolean> getAnswerMap() {
+        return answerMap;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAnswerMap(Map<String, Boolean> answerMap) {
+        this.answerMap = answerMap;
     }
 
     public boolean isCorrect() {

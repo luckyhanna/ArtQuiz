@@ -16,8 +16,10 @@ import com.example.hannabotar.artquiz.domain.Result;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -29,7 +31,7 @@ public class ResultActivity extends AppCompatActivity {
 
     List<Question> questionList;
 
-    Map<Integer, String> answerMap;
+    Map<Integer, Set<String>> answerMap;
 
     TextView scoreTextView;
 
@@ -56,14 +58,24 @@ public class ResultActivity extends AppCompatActivity {
             Result result = new Result();
             Question question = questionList.get(i);
             result.setQuestion(question);
-            String correctAnswer = null;
+
+            Set<String> correctAnswers = new HashSet<>();
+            Map<String, Boolean> resultAnswers = new HashMap<>();
             for (String answer : question.getAnswerMap().keySet()) {
                 if (question.getAnswerMap().get(answer)) {
-                    correctAnswer = answer;
+                    correctAnswers.add(answer);
                 }
             }
-            result.setAnswer(answerMap.get(i));
-            result.setCorrect(answerMap.get(i).equals(correctAnswer));
+            if (correctAnswers.equals(answerMap.get(i))) {
+                result.setCorrect(true);
+            } else {
+                result.setCorrect(false);
+            }
+            for (String checkedAnswer : answerMap.get(i)) {
+               resultAnswers.put(checkedAnswer, (question.getAnswerMap().get(checkedAnswer)));
+            }
+            result.setAnswerMap(resultAnswers);
+
             if (result.isCorrect()) {
                 correct += 1;
             }
