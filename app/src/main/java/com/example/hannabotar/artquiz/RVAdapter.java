@@ -115,6 +115,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        checkBox.setChecked(!checkBox.isChecked());
                         checkBox.callOnClick();
                     }
                 });

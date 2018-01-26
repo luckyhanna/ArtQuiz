@@ -72,7 +72,11 @@ public class ResultActivity extends AppCompatActivity {
                 result.setCorrect(false);
             }
             for (String checkedAnswer : answerMap.get(i)) {
-               resultAnswers.put(checkedAnswer, (question.getAnswerMap().get(checkedAnswer)));
+                if (question.getAnswerMap().get(checkedAnswer) == null){
+                    resultAnswers.put(checkedAnswer, false);
+                } else {
+                    resultAnswers.put(checkedAnswer, (question.getAnswerMap().get(checkedAnswer)));
+                }
             }
             result.setAnswerMap(resultAnswers);
 
