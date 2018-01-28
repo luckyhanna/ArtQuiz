@@ -16,45 +16,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_margin="20dp"
         >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="5"
-            android:gravity="bottom"
-            android:text="@string/title_art"
-            android:textColor="@color/colorAccent"
-            android:textSize="110sp"
-            android:fontFamily="@font/amazr"
-            android:shadowColor="@color/white"
-            android:shadowRadius="1"
-            android:shadowDx="-1"
-            android:shadowDy="1"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:text="@string/title_quiz"
-            android:textSize="100sp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="top"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/opaqueBlack"
-            android:shadowColor="@color/white"
-            android:shadowRadius="1"
-            android:shadowDx="-1"
-            android:shadowDy="1"
-            android:rotation="-30"
-            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="bottom"
+                android:text="@string/title_art"
+                android:textColor="@color/colorAccent"
+                android:textSize="110sp"
+                android:fontFamily="@font/amazr"
+                android:shadowColor="@color/white"
+                android:shadowRadius="1"
+                android:shadowDx="-1"
+                android:shadowDy="1"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_quiz"
+                android:textSize="110sp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="top"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/opaqueBlack"
+                android:shadowColor="@color/white"
+                android:shadowRadius="1"
+                android:shadowDx="-1"
+                android:shadowDy="1"
+                android:rotation="-30"
+                />
+        </LinearLayout>
+
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="6"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"

@@ -1,9 +1,23 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">ArtQuiz</string>
 
     <string name="title_art">Art</string>
-    <string name="title_quiz">Quiz</string>
+    <string name="title_quiz">QUIZ</string>
     <string name="name_hint">Enter your name</string>
     <string name="start_button">Start</string>
     <string name="title_activity_result">ResultActivity</string>
+
+    <string name="incomplete">You have unanswered question! (<xliff:g id="question_numbers" example="1,2,3">%s</xliff:g>)</string>
+    <string name="have_fun">Have fun, <xliff:g id="username" example="Hanna">%s</xliff:g>!</string>
+    <string name="congrats">Congratulations, <xliff:g id="username" example="Hanna">%s</xliff:g>!</string>
+    <string name="score">Your score is: <xliff:g id="actual_score" example="3">%d</xliff:g>/<xliff:g id="max_score" example="15">%d</xliff:g></string>
+
+    <string name="confirm">Yes</string>
+    <string name="cancel">No</string>
+    <string name="close">Close</string>
+    <string name="confirm_message">Are you sure you want to exit the quiz?</string>
+    <string name="go_to_home_page">Go to home page</string>
+    <string name="finish_quiz">Finish quiz</string>
+    <string name="question_photo">quiestion photo, ex: android:src="@drawable/mona_lisa"</string>
+    <string name="background_image">background_image</string>
 </resources>

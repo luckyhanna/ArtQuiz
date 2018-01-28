@@ -20,10 +20,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*final View decorView = getWindow().getDecorView();
+        decorView.setOnSystemUiVisibilityChangeListener
+                (new View.OnSystemUiVisibilityChangeListener() {
+                    @Override
+                    public void onSystemUiVisibilityChange(int visibility) {
+                        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+                        decorView.setSystemUiVisibility(uiOptions);
+                    }
+                });
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);*/
+
         setContentView(R.layout.activity_main);
 
         startButton = (Button) findViewById(R.id.start_button);
         startButton.setEnabled(false);
+        startButton.setTextColor(getResources().getColor(R.color.colorPrimaryDarker));
 
         nameInput = (EditText) findViewById(R.id.name_input);
         nameInput.addTextChangedListener(new TextWatcher() {
@@ -41,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if (editable.length() > 0) {
                     startButton.setEnabled(true);
+                    startButton.setTextColor(getResources().getColor(R.color.white));
                 } else {
                     startButton.setEnabled(false);
+                    startButton.setTextColor(getResources().getColor(R.color.colorPrimaryDarker));
                 }
             }
         });
@@ -53,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i("MainActivity","Start button clicked");
 
         String name = nameInput.getText().toString();
-        Intent intent = new Intent(this, ScrollableQuizActivity.class);
+        Intent intent = new Intent(this, ScrollableQuizRecActivity.class);
         intent.putExtra(EXTRA_NAME, name);
         startActivity(intent);
     }

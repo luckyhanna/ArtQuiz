@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hannabotar.artquiz.ResultActivity">
+    tools:context="com.example.hannabotar.artquiz.ScrollableQuizRecActivity">
 
     <TextView
-        android:id="@+id/results_title"
+        android:id="@+id/questions_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDarker"
@@ -17,44 +16,32 @@
         android:text=""
         android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/score_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_below="@id/results_title"
-        android:text=""
-        android:textSize="18sp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        />
-
     <LinearLayout
+        android:id="@+id/rv_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/go_home"
-        android:layout_below="@id/score_text"
-
+        android:layout_above="@id/finish_quiz"
+        android:layout_below="@id/questions_title"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/result_rv"
+            android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/go_home"
+        android:id="@+id/finish_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:onClick="goHome"
-        android:text="@string/go_to_home_page" />
+        android:onClick="finishQuiz"
+        android:text="@string/finish_quiz" />
 
 </RelativeLayout>
