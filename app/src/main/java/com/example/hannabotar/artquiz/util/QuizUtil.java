@@ -197,7 +197,6 @@ public class QuizUtil {
         String question3 = "Check Van Gogh's painting(s):";
         multipleChoiceList.add(new Question(R.drawable.van_gogh, question3, multipleMap3, explanation3, QuestionType.MULTIPLE_CHOICE));
 
-
         // Free text questions
         Map<String, Boolean> singleText1 = new HashMap<>();
         singleText1.put("1452", true);
@@ -210,8 +209,6 @@ public class QuizUtil {
         String explanationText2 = "Salvador Domingo Felipe Jacinto Dalí Domenech was born on 11 May <b>1904</b> in Figueres, Catalonia, Spain.";
         questionList.add(new Question(R.drawable.dali, "In what year was Salvador Dalí born?",
                 singleText2, explanationText2, QuestionType.FREE_TEXT));
-
-
 
         long seed = System.nanoTime();
         Collections.shuffle(singleChoiceList, new Random(seed));
