@@ -1,6 +1,7 @@
 package com.example.hannabotar.artquiz;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,10 +24,17 @@ public class ScrollableQuizRecActivity extends AppCompatActivity {
 
     public static final String QUESTION_LIST = "question_list";
     public static final String ANSWER_MAP = "answer_map";
+    public static final String PARCELABLE = "parcelable";
+    public static final String QUESTIONS = "questions";
+    public static final String SELECTION = "selection";
 
     String userName;
 
+    RVAdapter adapter;
+
     RecyclerView rv;
+
+    LinearLayoutManager llm;
 
     List<Question> questionList;
 
@@ -44,21 +52,44 @@ public class ScrollableQuizRecActivity extends AppCompatActivity {
         rv = (RecyclerView)findViewById(R.id.rv);
         rv.setHasFixedSize(true);
 
-        LinearLayoutManager llm = new LinearLayoutManager(this); // (context)
+        llm = new LinearLayoutManager(this); // (context)
         rv.setLayoutManager(llm);
 
-        questionList = QuizUtil.initMockData();
+        if (savedInstanceState != null) {
+            Parcelable parcelable = savedInstanceState.getParcelable(PARCELABLE);
+            rv.getLayoutManager().onRestoreInstanceState(parcelable);
 
+            questionList = (List<Question>) savedInstanceState.getSerializable(QUESTIONS);
+            HashMap<Integer, Set<String>> selection = (HashMap<Integer, Set<String>>) savedInstanceState.getSerializable(SELECTION);
 
-        RVAdapter adapter = new RVAdapter(questionList);
-        rv.setAdapter(adapter);
+            adapter = new RVAdapter(questionList, selection);
+            rv.setAdapter(adapter);
+        } else {
+            questionList = QuizUtil.initMockData();
+
+            adapter = new RVAdapter(questionList);
+            rv.setAdapter(adapter);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        Parcelable parcelable = rv.getLayoutManager().onSaveInstanceState();
+        outState.putParcelable(PARCELABLE, parcelable);
+
+        ArrayList<Question> questions = (ArrayList<Question>) adapter.getQuestions();
+        outState.putSerializable(QUESTIONS, questions);
+        HashMap<Integer, Set<String>> selection = (HashMap<Integer, Set<String>>) adapter.getAnswerSelection();
+        outState.putSerializable(SELECTION, selection);
+
+        super.onSaveInstanceState(outState);
     }
 
     public void finishQuiz(View view) {
 
         RecyclerView recView = (RecyclerView) findViewById(R.id.rv);
         RVAdapter rvAdapter = (RVAdapter) recView.getAdapter();
-        Map<Integer, Set<String>> answerSelection = rvAdapter.getRadioGroupSelection();
+        Map<Integer, Set<String>> answerSelection = rvAdapter.getAnswerSelection();
         System.out.println(answerSelection);
 
         List<Integer> unanswered = getUnansweredQuestions(answerSelection);

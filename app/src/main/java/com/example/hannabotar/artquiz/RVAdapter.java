@@ -4,13 +4,11 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,15 +33,20 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
 
     List<Question> questions;
 
-    Map<Integer, Set<String>> radioGroupSelection = new HashMap<>();
+    Map<Integer, Set<String>> answerSelection = new HashMap<>();
 
     public RVAdapter(List<Question> questions) {
         this.questions = questions;
 
         for (int i = 0; i < questions.size(); i++) {
-            radioGroupSelection.put(i, new HashSet<String>());
+            answerSelection.put(i, new HashSet<String>());
         }
-        System.out.println("TODO");
+        setHasStableIds(true);
+    }
+
+    public RVAdapter(List<Question> questions, Map<Integer, Set<String>> answerSelection) {
+        this.questions = questions;
+        this.answerSelection = answerSelection;
         setHasStableIds(true);
     }
 
@@ -96,7 +99,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
                         String answerChecked = ((RadioButton) view).getText().toString();
                         Set<String> answerSet = new HashSet<>();
                         answerSet.add(answerChecked);
-                        radioGroupSelection.put(position, answerSet);
+                        answerSelection.put(position, answerSet);
                     }
                 });
             }
@@ -124,9 +127,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
                     public void onClick(View view) {
                         String answerChecked = answerText;
                         if (((CheckBox) view).isChecked()) {
-                            radioGroupSelection.get(position).add(answerChecked);
+                            answerSelection.get(position).add(answerChecked);
                         } else {
-                            radioGroupSelection.get(position).remove(answerChecked);
+                            answerSelection.get(position).remove(answerChecked);
                         }
                     }
                 });
@@ -154,9 +157,45 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
                     String answerChecked = editable.toString();
                     Set<String> answerSet = new HashSet<>();
                     answerSet.add(answerChecked);
-                    radioGroupSelection.put(position, answerSet);
+                    answerSelection.put(position, answerSet);
                 }
             });
+        }
+        restoreState(type, position, questionList.size(), holder);
+
+    }
+
+    private void restoreState(QuestionType questionType, int position,int numberOfAnswers, QuestionViewHolder holder) {
+        Set<String> currentSelectionSet = answerSelection.get(position);
+        if (currentSelectionSet == null || currentSelectionSet.size() == 0) {
+            return;
+        }
+        if (QuestionType.SINGLE_CHOICE.equals(questionType)) {
+            for (String s : currentSelectionSet) {
+                for (int i = 0; i < numberOfAnswers; i++) {
+                    RadioButton rb = (RadioButton) holder.radioGroup.getChildAt(i);
+                    if (rb.getText().toString().equals(s)) {
+                        rb.setChecked(true);
+                        break;
+                    }
+                }
+            }
+        } else if (QuestionType.MULTIPLE_CHOICE.equals(questionType)) {
+
+            for (String s : currentSelectionSet) {
+                for (int i = 0; i < numberOfAnswers; i++) {
+                    LinearLayout checkBoxGroup = (LinearLayout) holder.multipleLayout.getChildAt(i);
+                    TextView textView = (TextView) checkBoxGroup.getChildAt(1);
+                    if (textView.getText().toString().equals(s)) {
+                        CheckBox checkBox = (CheckBox) checkBoxGroup.getChildAt(0);
+                        checkBox.setChecked(true);
+                    }
+                }
+            }
+        } else {
+            for (String s : currentSelectionSet) {
+                holder.textLayout.setText(s);
+            }
         }
 
     }
@@ -175,8 +214,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
         return questions;
     }
 
-    public Map<Integer, Set<String>> getRadioGroupSelection() {
-        return radioGroupSelection;
+    public Map<Integer, Set<String>> getAnswerSelection() {
+        return answerSelection;
     }
 
     public static class QuestionViewHolder extends RecyclerView.ViewHolder {
