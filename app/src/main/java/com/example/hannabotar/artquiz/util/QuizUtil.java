@@ -206,9 +206,9 @@ public class QuizUtil {
                 singleText1, explanationText1, QuestionType.FREE_TEXT));
 
         Map<String, Boolean> singleText2 = new HashMap<>();
-        singleText2.put("1452", true);
-        String explanationText2 = "Salvador Domingo Felipe Jacinto Dalí Domenech was born on 15 April <b>1452</b> in Vinci, Republic of Florence.";
-        freeTextList.add(new Question(R.drawable.dali, "In what year was Salvador Dalí born?",
+        singleText2.put("1904", true);
+        String explanationText2 = "Salvador Domingo Felipe Jacinto Dalí Domenech was born on 11 May <b>1904</b> in Figueres, Catalonia, Spain.";
+        questionList.add(new Question(R.drawable.dali, "In what year was Salvador Dalí born?",
                 singleText2, explanationText2, QuestionType.FREE_TEXT));
 
 
