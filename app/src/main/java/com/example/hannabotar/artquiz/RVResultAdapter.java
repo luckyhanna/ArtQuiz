@@ -1,6 +1,5 @@
 package com.example.hannabotar.artquiz;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
