@@ -216,8 +216,8 @@ public class QuizUtil {
         Collections.shuffle(freeTextList, new Random(seed));
 
         questionList.addAll(singleChoiceList.subList(0,5));
-//        questionList.addAll(multipleChoiceList);
-//        questionList.addAll(freeTextList);
+        questionList.addAll(multipleChoiceList);
+        questionList.addAll(freeTextList);
 
         Collections.shuffle(questionList, new Random(seed));
         return questionList;
