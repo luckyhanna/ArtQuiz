@@ -140,7 +140,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.QuestionViewHolder
             holder.multipleLayout.setVisibility(View.GONE);
             holder.textLayout.setVisibility(View.VISIBLE);
             holder.textLayout.setImeOptions(EditorInfo.IME_ACTION_DONE);
-//            holder.textLayout.onKeyUp(KeyEvent.KEYCODE_ENTER, KeyEvent.ACTION_UP);
             holder.textLayout.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

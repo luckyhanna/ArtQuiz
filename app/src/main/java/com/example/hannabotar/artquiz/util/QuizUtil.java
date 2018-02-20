@@ -17,8 +17,8 @@ import java.util.Random;
 
 public class QuizUtil {
 
-    public static final String PAINTING_QUESTION = "Name the painting: ";
-    public static final String SCULPTURE_QUESTION = "Name the sculpture: ";
+    private static final String PAINTING_QUESTION = "Name the painting: ";
+    private static final String SCULPTURE_QUESTION = "Name the sculpture: ";
 
     public static List<Question> initMockData() {
         List<Question> questionList = new ArrayList<>();
@@ -179,11 +179,10 @@ public class QuizUtil {
 
         Map<String, Boolean> multipleMap2 = new HashMap<>();
         multipleMap2.put("The Night Watch", true);
-        multipleMap2.put("Tha Bathers", false);
+        multipleMap2.put("The Anatomy Lesson of Dr. Nicolaes Tulp", true);
         multipleMap2.put("Whistler's Mother", false);
-        String explanation2 = "<b>The Night Watch</b> is a 1642 painting by Rembrandt van Rijn. " +
-                "<b>Whistler's Mother</b> is a painting in oils on canvas by James McNeill Whistler. " +
-                "<b>The Bathers</b> by Paul Cézanne is considered to be the painter's finest work.";
+        String explanation2 = "<b>The Night Watch</b> and <b>The Anatomy Lesson of Dr. Nicolaes Tulp</b> are paintings by Rembrandt van Rijn. " +
+                "<b>Whistler's Mother</b> is a painting in oils on canvas by James McNeill Whistler.";
         String question2 = "Check Rembrandt's painting(s):";
         multipleChoiceList.add(new Question(R.drawable.rembrandt, question2, multipleMap2, explanation2, QuestionType.MULTIPLE_CHOICE));
 
