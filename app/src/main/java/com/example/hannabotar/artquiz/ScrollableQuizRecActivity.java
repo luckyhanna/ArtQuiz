@@ -15,11 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hannabotar.artquiz.domain.Question;
+import com.example.hannabotar.artquiz.domain.Result;
 import com.example.hannabotar.artquiz.util.QuizUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -131,6 +133,40 @@ public class ScrollableQuizRecActivity extends AppCompatActivity {
             incompleteToast.show();
             return;
         }
+
+        int correct = 0;
+        for (int i = 0; i < questionList.size(); i++) {
+            Result result = new Result();
+            Question question = questionList.get(i);
+            result.setQuestion(question);
+
+            Set<String> correctAnswers = new HashSet<>();
+            Map<String, Boolean> resultAnswers = new HashMap<>();
+            for (String answer : question.getAnswerMap().keySet()) {
+                if (question.getAnswerMap().get(answer)) {
+                    correctAnswers.add(answer);
+                }
+            }
+            if (correctAnswers.equals(answerSelection.get(i))) {
+                result.setCorrect(true);
+            } else {
+                result.setCorrect(false);
+            }
+            for (String checkedAnswer : answerSelection.get(i)) {
+                if (question.getAnswerMap().get(checkedAnswer) == null){
+                    resultAnswers.put(checkedAnswer, false);
+                } else {
+                    resultAnswers.put(checkedAnswer, (question.getAnswerMap().get(checkedAnswer)));
+                }
+            }
+            result.setAnswerMap(resultAnswers);
+
+            if (result.isCorrect()) {
+                correct += 1;
+            }
+        }
+        Toast resultToast = Toast.makeText(this, getString(R.string.score, correct, questionList.size()), Toast.LENGTH_LONG);
+        resultToast.show();
 
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putExtra(MainActivity.EXTRA_NAME, userName);
